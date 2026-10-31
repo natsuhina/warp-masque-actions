@@ -30,7 +30,8 @@ def ed25519_to_wg(raw_sk: bytes) -> str:
 async def main():
     outdir = sys.argv[1] if len(sys.argv) > 1 else "dist"
     s = Session(appversion="linux-vpn@4.19.0",
-user_agent="ProtonVPN/4.19.0 (Linux; Ubuntu/24.04)")
+                user_agent="ProtonVPN/4.19.0 (Linux; Ubuntu/24.04)")
+
     if not await s.async_authenticate(os.environ["PROTON_USER"],
                                       os.environ["PROTON_PASS"]):
         sys.exit("登录失败：账号密码不对，或触发了风控（等十几分钟再试）")
